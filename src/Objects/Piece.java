@@ -1,14 +1,20 @@
+package Objects;
+
+import movement.MoveValidator;
+
+import java.util.List;
+
 public class Piece {
     private String type;
     private Boolean moved = false;
     private COLOR color;
 
-    public MoveValidator moveValidator;
+    public MoveValidator moveValidators;
 
-    public Piece(String type, COLOR color, MoveValidator moveValidator) {
+    public Piece(String type, COLOR color, MoveValidator moveValidators) {
         this.type = type;
         this.color = color;
-        this.moveValidator=moveValidator;
+        this.moveValidators=moveValidators;
     }
 
     public String getType() {

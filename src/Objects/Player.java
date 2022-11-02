@@ -1,3 +1,5 @@
+package Objects;
+
 public class Player {
     private COLOR color;
     private String name;
