@@ -2,6 +2,7 @@ package Objects;
 
 import movement.MoveValidator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Piece {
@@ -9,12 +10,18 @@ public class Piece {
     private Boolean moved = false;
     private COLOR color;
 
-    public MoveValidator moveValidators;
+    public List<MoveValidator> moveValidators;
 
-    public Piece(String type, COLOR color, MoveValidator moveValidators) {
+    public Piece(String type, COLOR color, List<MoveValidator> moveValidators) {
         this.type = type;
         this.color = color;
         this.moveValidators=moveValidators;
+    }
+
+    public Piece(String type, COLOR color) {
+        this.type = type;
+        this.color = color;
+        moveValidators=new ArrayList<>();
     }
 
     public String getType() {
