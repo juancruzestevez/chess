@@ -11,17 +11,20 @@ public class Piece {
     private COLOR color;
 
     public List<MoveValidator> moveValidators;
+    public List<MoveValidator> strictValidator;
 
-    public Piece(String type, COLOR color, List<MoveValidator> moveValidators) {
+    public Piece(String type, COLOR color, List<MoveValidator> moveValidators, List<MoveValidator> strictValidator) {
         this.type = type;
         this.color = color;
-        this.moveValidators=moveValidators;
+        this.moveValidators = moveValidators;
+        this.strictValidator = strictValidator;
     }
 
     public Piece(String type, COLOR color) {
         this.type = type;
         this.color = color;
-        moveValidators=new ArrayList<>();
+        moveValidators = new ArrayList<>();
+        strictValidator = new ArrayList<>();
     }
 
     public String getType() {
