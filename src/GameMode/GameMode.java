@@ -8,5 +8,5 @@ import Objects.Player;
 public interface GameMode {
     Board generateBoard();
     Player netxTurn(Game game, COLOR color);
-    boolean hasWon();
+    void hasWon(Player player, Board board, Game game);
 }

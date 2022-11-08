@@ -17,9 +17,20 @@ public class Board{
     }
 
     public Point indexOf(int x, int y){
-        for (int i = 0; i < square.size(); i++) {
-            if (square.get(i).getX() == x && square.get(i).getY() == y){
-                return square.get(i);
+        for (Point point : square) {
+            if (point.getX() == x && point.getY() == y) {
+                return point;
+            }
+        }
+        return null;
+    }
+
+
+
+    public Point findPointByPiece(COLOR color, TypePiece typePiece){
+        for (Point point : square) {
+            if (point.getPiece().getColor() == color && point.getPiece().getType() == typePiece) {
+                return point;
             }
         }
         return null;

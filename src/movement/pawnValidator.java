@@ -5,17 +5,17 @@ import Objects.Point;
 
 public class pawnValidator implements MoveValidator{
 
-    private MoveValidator limitv1;
-    private MoveValidator limitv2;
-    private MoveValidator fowardv;
-    private MoveValidator horizontalv;
-    private MoveValidator diagonalv;
+    private final MoveValidator limitv1;
+    private final MoveValidator limitv2;
+    private final MoveValidator fowardv;
+    private final MoveValidator verticalv;
+    private final MoveValidator diagonalv;
 
     public pawnValidator() {
         limitv1 = new LimitValidator(1);
         limitv2 = new LimitValidator(2);
         fowardv = new FowardValidator();
-        horizontalv = new HorizontalValidator();
+        verticalv = new VerticalValidator();
         diagonalv = new DiagonalValidator();
     }
 
@@ -26,9 +26,9 @@ public class pawnValidator implements MoveValidator{
                 return diagonalv.validate(originPoint, pointMove, board) && limitv1.validate(originPoint, pointMove, board);
             }else {
                 if (originPoint.getPiece().getMoved()){
-                    return horizontalv.validate(originPoint, pointMove, board) && limitv2.validate(originPoint, pointMove, board);
+                    return verticalv.validate(originPoint, pointMove, board) && limitv2.validate(originPoint, pointMove, board);
                 }else {
-                    return horizontalv.validate(originPoint, pointMove, board) && limitv1.validate(originPoint, pointMove, board);
+                    return verticalv.validate(originPoint, pointMove, board) && limitv1.validate(originPoint, pointMove, board);
                 }
             }
         }else {

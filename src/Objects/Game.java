@@ -7,22 +7,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Game {
-    private Player player1;
-    private Player player2;
-    private int time1;
-    private int time2;
+    private final Player player1;
+    private final Player player2;
     private Player winner = null;
     private Board board;
-    private GameMode gameMode;
-    private Map<Integer, History> history;
+    private final GameMode gameMode;
+    private final Map<Integer, History> history;
     private Player turn;
-    private ArrayList<Piece> deadPieces;
+    private final ArrayList<Piece> deadPieces;
 
-    public Game(Player player1, Player player2, int time1, int time2, GameMode gameMode) {
+    public Game(Player player1, Player player2, GameMode gameMode) {
         this.player1 = player1;
         this.player2 = player2;
-        this.time1 = time1;
-        this.time2 = time2;
         turn = player1;
         history = new HashMap<Integer,History>();
         deadPieces = new ArrayList<Piece>();
@@ -36,14 +32,6 @@ public class Game {
 
     public Player getPlayer2() {
         return player2;
-    }
-
-    public int getTime1() {
-        return time1;
-    }
-
-    public int getTime2() {
-        return time2;
     }
 
     public Player getWinner() {
@@ -69,15 +57,6 @@ public class Game {
     public ArrayList<Piece> getDeadPieces() {
         return deadPieces;
     }
-
-    public void setTime1(int time1) {
-        this.time1 = time1;
-    }
-
-    public void setTime2(int time2) {
-        this.time2 = time2;
-    }
-
     public void setWinner(Player winner) {
         this.winner = winner;
     }
@@ -95,6 +74,18 @@ public class Game {
             return player2;
         }else{
             return player1;
+        }
+    }
+
+    public void check(Player player){
+        Point kingPoint = board.findPointByPiece(player.getColor(), TypePiece.KING);
+        for (int i = 0; i < board.getSquare().size(); i++) {
+            if (board.getSquare().get(i).getPiece().getColor() != player.getColor()){
+                if (board.canMove(board.getSquare().get(i), kingPoint)){
+                    player.setCheck( true);
+                    gameMode.hasWon(player, board, this);
+                }
+            }
         }
     }
 }

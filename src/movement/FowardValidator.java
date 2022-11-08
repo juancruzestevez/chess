@@ -4,8 +4,6 @@ import Objects.Board;
 import Objects.COLOR;
 import Objects.Point;
 
-import javax.xml.validation.Validator;
-
 public class FowardValidator implements MoveValidator{
 
     public FowardValidator() {

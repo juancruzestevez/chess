@@ -6,28 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Piece {
-    private String type;
+    private final TypePiece type;
     private Boolean moved = false;
-    private COLOR color;
+    private final COLOR color;
 
     public List<MoveValidator> moveValidators;
     public List<MoveValidator> strictValidator;
 
-    public Piece(String type, COLOR color, List<MoveValidator> moveValidators, List<MoveValidator> strictValidator) {
+    public Piece(TypePiece type, COLOR color, List<MoveValidator> moveValidators, List<MoveValidator> strictValidator) {
         this.type = type;
         this.color = color;
         this.moveValidators = moveValidators;
         this.strictValidator = strictValidator;
     }
 
-    public Piece(String type, COLOR color) {
+    public Piece(TypePiece type, COLOR color) {
         this.type = type;
         this.color = color;
         moveValidators = new ArrayList<>();
         strictValidator = new ArrayList<>();
     }
 
-    public String getType() {
+    public TypePiece getType() {
         return type;
     }
 

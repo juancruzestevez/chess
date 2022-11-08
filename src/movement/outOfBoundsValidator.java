@@ -3,12 +3,12 @@ package movement;
 import Objects.Board;
 import Objects.Point;
 
-public class CantEatValidator implements MoveValidator{
-    public CantEatValidator() {
+public class outOfBoundsValidator implements MoveValidator{
+    public outOfBoundsValidator() {
     }
 
     @Override
     public boolean validate(Point originPoint, Point pointMove, Board board) {
-        return pointMove.isEmpty();
+        return originPoint != null && pointMove != null;
     }
 }

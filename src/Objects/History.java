@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    private Board board;
-    private List<Piece> deadPieces;
-    private Player turn;
+    private final Board board;
+    private final List<Piece> deadPieces;
+    private final Player turn;
 
     public History(Board board, List<Piece> deadPieces, Player turn) {
         this.board = board;
