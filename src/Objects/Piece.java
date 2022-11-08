@@ -35,6 +35,18 @@ public class Piece {
         return moved;
     }
 
+    public COLOR getColor() {
+        return color;
+    }
+
+    public List<MoveValidator> getMoveValidators() {
+        return moveValidators;
+    }
+
+    public List<MoveValidator> getStrictValidator() {
+        return strictValidator;
+    }
+
     public void setMoved(Boolean moved) {
         this.moved = moved;
     }

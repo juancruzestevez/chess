@@ -47,8 +47,12 @@ public class Original implements GameMode {
         return board;
     }
 
-    public Player netxTurn() {
-        return null;
+    public Player netxTurn(Game game, COLOR color) {
+        if (game.getPlayer1().getColor() == color){
+            return game.getPlayer2();
+        }else{
+            return game.getPlayer1();
+        }
     }
 
     public boolean hasWon() {

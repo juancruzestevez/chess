@@ -16,10 +16,6 @@ public class MultyJumpValidator implements MoveValidator{
     public boolean validate(Point originPoint, Point pointMove, Board board) {
         int x = originPoint.getX() - pointMove.getX();
         int y = originPoint.getY() - pointMove.getY();
-        if ((Math.abs(x) == fst && Math.abs(y) == snd) || (Math.abs(y) == fst && Math.abs(x) == snd)){
-            return true;
-        }else {
-            return false;
-        }
+        return (Math.abs(x) == fst && Math.abs(y) == snd) || (Math.abs(y) == fst && Math.abs(x) == snd);
     }
 }

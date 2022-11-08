@@ -1,5 +1,7 @@
 package Objects;
 
+import java.util.Objects;
+
 public class Player {
     private COLOR color;
     private String name;
@@ -30,4 +32,20 @@ public class Player {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    public void MovePiece(Point origin, Point newPoint){
+        if (origin.getPiece().getType().equals("king") && origin.equals(newPoint)){
+            game.setWinner(game.getOtherPlayer(color));
+        }else{
+            if (game.getBoard().canMove(origin, newPoint)){
+                if (game.getBoard().indexOf(newPoint.getX(), newPoint.getY()) != null){
+                    game.getDeadPieces().add(newPoint.getPiece());
+                }
+                game.setBoard(new Board(game.getBoard(), origin, newPoint));
+                game.getHistory().put(game.getHistory().size(), new History(game.getBoard(), game.getDeadPieces(), game.getTurn()));
+                game.setTurn(game.getGameMode().netxTurn(game, color));
+            }
+        }
+    }
+
 }
